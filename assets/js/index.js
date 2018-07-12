@@ -1,3 +1,14 @@
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+
+var recognition = new SpeechRecognition();
+var speechRecognitionList = new SpeechGrammarList();
+
+recognition.lang = 'en-US';
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+
 var synth = window.speechSynthesis;
 var msg = new SpeechSynthesisUtterance();
 var voices = window.speechSynthesis.getVoices();
