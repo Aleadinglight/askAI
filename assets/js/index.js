@@ -1,36 +1,7 @@
-if (annyang) {
-    // Let's define a command.
-    var commands = {
-      'hello': function() { alert('Hello world!'); }
-    };
-  
-    // Add our commands to annyang
-    annyang.addCommands(commands);
-  
-    // Start listening.
-    annyang.start();
-}
+import "./qwe.js";
 
-var talk = new Vue({
-    el:'#app',
-    methods:{
-        startTalking: function(){
-        }
-    }
-});
+import Artyom from 'artyom.js';
 
-var talk = new Vue({
-    el:'#app',
-    methods:{
-        startTalking: function(){
-        }
-    }
-});
+const Jarvis = new Artyom();
 
-var talk = new Vue({
-    el:'#app',
-    methods:{
-        startTalking: function(){
-        }
-    }
-});
+Jarvis.say("Hello World !");
