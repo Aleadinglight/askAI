@@ -22,6 +22,12 @@ Galadriel.addCommands([
         }
     },
     {
+        indexes: ['Galadriel','Are you there'],
+        action: (i) => {
+            say("I am here, master");        
+        }
+    },
+    {
         indexes: ['Define *'],
         smart:true,
         action: (i,wildcard) => {
@@ -45,10 +51,6 @@ Galadriel.initialize({
     debug: true, // Show messages in the console
     executionKeyword: "and do it now",
     listen: true, // Start to listen commands !
-
-    // If providen, you can only trigger a command if you say its name
-    // e.g to trigger Good Morning, you need to say "Jarvis Good Morning"
-    name: "Galadriel" 
 }).then(() => {
     console.log("Artyom has been succesfully initialized");
 }).catch((err) => {

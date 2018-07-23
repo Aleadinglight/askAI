@@ -1,0 +1,1 @@
+/opt/google/chrome/chrome --flag-switches-begin --flag-switches-end --allow-file-access-from-files
