@@ -13,4 +13,27 @@ function say(phrase){
     ai.message = phrase;
 }
 
-say("Hello, I am Galadriel");
+Galadriel.addCommands([
+    {
+        indexes: ['Hello','Hi','is someone there'],
+        action: (i) => {
+            say("Hello, I am Galadriel");        
+        }
+    },
+    {
+        indexes: ['Define *'],
+        smart:true,
+        action: (i,wildcard) => {
+            say("You've said : "+ wildcard);
+        }
+    },
+    {
+        indexes: ['Stop','Bye','Goodbye','Go away'],
+        action: (i,wildcard) => {
+            artyom.fatality().then(() => {
+                console.log("Galadriel succesfully stopped");
+            });
+        }
+    },
+]);
+
