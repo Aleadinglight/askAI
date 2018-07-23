@@ -1,0 +1,23 @@
+{
+  "name": "askai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aleadinglight/askAI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aleadinglight/askAI/issues"
+  },
+  "homepage": "https://github.com/Aleadinglight/askAI#readme",
+  "devDependencies": {
+    "webpack": "^4.16.1",
+    "webpack-cli": "^3.1.0"
+  }
+}
