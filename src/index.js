@@ -9,6 +9,7 @@ var ai = new Vue({
 });
 
 function say(phrase){
+    console.log(phrase);
     Galadriel.say(phrase);
     ai.message = phrase;
 }
