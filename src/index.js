@@ -28,7 +28,7 @@ Galadriel.addCommands([
         }
     },
     {
-        indexes: ['Define *'],
+        indexes: ['What is *'],
         smart:true,
         action: (i,wildcard) => {
             say("You've said : "+ wildcard);
@@ -54,7 +54,7 @@ Galadriel.initialize({
     executionKeyword: "and do it now",
     listen: true, // Start to listen commands !
 }).then(() => {
-    console.log("Artyom has been succesfully initialized");
+    console.log("Galadriel has been succesfully initialized");
 }).catch((err) => {
-    console.error("Artyom couldn't be initialized: ", err);
+    console.error("Galadriel couldn't be initialized: ", err);
 });
