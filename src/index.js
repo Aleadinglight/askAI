@@ -37,12 +37,14 @@ Galadriel.addCommands([
     {
         indexes: ['Stop','Bye','Goodbye','Go away'],
         action: (i,wildcard) => {
-            artyom.fatality().then(() => {
+            Galadriel.fatality().then(() => {
                 console.log("Galadriel succesfully stopped");
             });
         }
     },
 ]);
+
+Galadriel.ArtyomVoicesIdentifiers["en-GB"] = ["Google UK English Female", "Google UK English Male", "en-GB", "en_GB"];
 
 Galadriel.initialize({
     lang: "en-GB", // GreatBritain english
