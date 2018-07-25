@@ -21,11 +21,12 @@
     <div class=top>
     </div>
     <div class="container-fluid">
-        <transition name="type">
-            <div id="ai">
-                <p v-if="show" class="typingText">{{ message }}</p>
-            </div>
-        </transition>
+        <div id="ai">
+            <transition name="typingText" enter-active-class="typingText">
+                <vue-typer :text="message" :repeat='0'> </vue-typer>
+            </transition>
+        </div>
+          
     </div>
     <script src="./dist/main.js"></script>
 

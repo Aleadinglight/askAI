@@ -1,4 +1,6 @@
 import Artyom from "artyom.js";
+import { VueTyper } from 'vue-typer';
+
 const Galadriel = new Artyom();
 
 var ai = new Vue({
@@ -6,15 +8,18 @@ var ai = new Vue({
     data:{
         message: 'Hello',
         show:true
+    },
+    components: {
+        // ES6; property shorthand + Vue should automatically dasherize the key for us
+        VueTyper
     }
 });
 
+
 function say(phrase){
     console.log(phrase);
-    ai.show = false;
     Galadriel.say(phrase);
     ai.message = phrase;
-    ai.show = true;
 }
 
 Galadriel.addCommands([
