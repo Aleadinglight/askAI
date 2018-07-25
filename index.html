@@ -21,10 +21,11 @@
     <div class=top>
     </div>
     <div class="container-fluid">
-        
-        <div id="ai" class="typingText">
-            {{ message }}
-        </div>
+        <transition name="type">
+            <div id="ai">
+                <p v-if="show" class="typingText">{{ message }}</p>
+            </div>
+        </transition>
     </div>
     <script src="./dist/main.js"></script>
 

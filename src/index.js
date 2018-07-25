@@ -4,14 +4,17 @@ const Galadriel = new Artyom();
 var ai = new Vue({
     el:'#ai',
     data:{
-        message: 'Hello'
+        message: 'Hello',
+        show:true
     }
 });
 
 function say(phrase){
     console.log(phrase);
+    ai.show = false;
     Galadriel.say(phrase);
     ai.message = phrase;
+    ai.show = true;
 }
 
 Galadriel.addCommands([
