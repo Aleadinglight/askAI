@@ -1,17 +1,43 @@
+html,body{
+    background: #000000;
+}
 .top {
     height: 20vh;
 }
 
-.typingText{    
+.vue-typer {
     font-family: "Courier";
-    font-size: 20px;
-    margin: 10px 0 0 10px;
+    font-size: 30px;
     white-space: nowrap;
     overflow: hidden;
-    width: 30em;
-    animation: type 4s steps(60, end); 
 }
 
-@keyframes type{ 
-    from { width: 0; } 
+.vue-typer .custom.char {
+    color:#ffffff;
+}
+.vue-typer .custom.char.selected {
+    background-color: #264F78;
+}
+
+.vue-typer .custom.caret {
+    width: 10px;
+    background-color: #ffffff;
+}
+
+.vue-typer .custom.caret.complete {
+    width: 10px;
+    background-color: #ffffff;
+}
+
+.blink_me {
+    font-family: "Courier";
+    font-size: 30px;
+    color: #ffffff;
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
 }

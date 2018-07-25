@@ -20,11 +20,10 @@
   
     <div class=top>
     </div>
-    <div class="container-fluid">
-        <div id="ai">
-            <transition name="typingText" enter-active-class="typingText">
-                <vue-typer :text="message" :repeat='0'> </vue-typer>
-            </transition>
+    <div class="container-fluid align-middle">
+        <div id="ai" class="d-flex justify-content-center">
+            <vue-typer :text="message" :repeat='0'> </vue-typer>
+            <p class="blink_me"><b>_</b></p>
         </div>
           
     </div>
