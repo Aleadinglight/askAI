@@ -5,8 +5,12 @@ html,body{
     height: 20vh;
 }
 
+.container-fluid{
+    height: 80vh;
+}
+
 .vue-typer {
-    font-family: "Courier";
+    font-family: "Courier New", Courier, monospace;
     font-size: 30px;
     white-space: nowrap;
     overflow: hidden;
@@ -20,12 +24,7 @@ html,body{
 }
 
 .vue-typer .custom.caret {
-    width: 10px;
-    background-color: #ffffff;
-}
-
-.vue-typer .custom.caret.complete {
-    width: 10px;
+    width: 0px;
     background-color: #ffffff;
 }
 
