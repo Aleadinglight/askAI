@@ -16,10 +16,19 @@ var ai = new Vue({
 });
 
 
-function say(phrase){
+function say(phrase,lastphrase=""){
+    if (lastphrase==="")
+        ai.message=lastphrase;
     console.log(phrase);
     Galadriel.say(phrase);
-    ai.message = phrase;
+    ai.message+= phrase;
+}
+
+function delayProgram(milisecs){
+    return new Promise((resolve,reject)=>{
+        setTimeout(function (){
+          }, milisecs);
+    });
 }
 
 function findDef(keyWord){
@@ -32,11 +41,7 @@ function findDef(keyWord){
                 resolve("Sorry, we cannot find this words");
             }
             else{
-                returnMessage=data.word.charAt(0).toUpperCase()+data.word.slice(1)+"\n";
-                data.definitions.forEach(function(element,i){
-                    returnMessage+=(i+1)+". "+element.definition+"\n";
-                });
-                resolve(returnMessage);
+                resolve(data);
             }       
         });
     });  
@@ -60,11 +65,19 @@ Galadriel.addCommands([
         smart:true,
         action: (i,wildcard) => {
             say("Searching for the word..");
-            findDef(wildcard).then((returnMessage)=>say(returnMessage));
+            findDef(wildcard).then((data)=>{
+                say(data.word.charAt(0).toUpperCase()+data.word.slice(1)+"\n");
+                delayProgram(1000);
+                data.definitions.forEach(function(element,i){
+                    var sentence = (i+1)+". "+element.definition+"\n";
+                    say(sentence,ai.message);
+                    delayProgram(1000);
+                });
+            });
         }
     },
     {
-        indexes: ['Stop','Bye','Goodbye','Go away'],
+        indexes: ['Shut down','Bye','Goodbye','Go away'],
         action: (i,wildcard) => {
             say("Goodbye, master");
             Galadriel.fatality().then(() => {
