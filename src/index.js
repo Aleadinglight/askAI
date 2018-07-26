@@ -22,6 +22,24 @@ function say(phrase){
     ai.message = phrase;
 }
 
+function findDef(keyWord){
+    var returnMessage="";
+    $.get( "/search", { name: keyWord })
+    .done(function( data ){
+        console.log(data);
+        if (data==="Bad response from server!"){
+            returnMessage = "Sorry, we cannot found this word!";
+        }
+        else{
+            returnMessage=data.word.charAt(0).toUpperCase()+data.word.slice(1)+"\n";
+            data.definitions.forEach(function(element,i){
+                returnMessage+=(i+1)+". "+element.definition+"\n";
+            });
+        }
+    });
+    return returnMessage;
+}
+
 Galadriel.addCommands([
     {
         indexes: ['Hello','Hi','is someone there'],
@@ -39,7 +57,7 @@ Galadriel.addCommands([
         indexes: ['What is *'],
         smart:true,
         action: (i,wildcard) => {
-            say("You've said : "+ wildcard);
+            findDef(wildcard);
         }
     },
     {
