@@ -57,6 +57,7 @@ Galadriel.addCommands([
         indexes: ['What is *'],
         smart:true,
         action: (i,wildcard) => {
+            say("Searching for the word..");
             findDef(wildcard);
         }
     },
