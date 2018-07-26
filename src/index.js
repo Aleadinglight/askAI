@@ -23,21 +23,23 @@ function say(phrase){
 }
 
 function findDef(keyWord){
-    var returnMessage="";
-    $.get( "/search", { name: keyWord })
-    .done(function( data ){
-        console.log(data);
-        if (data==="Bad response from server!"){
-            returnMessage = "Sorry, we cannot found this word!";
-        }
-        else{
-            returnMessage=data.word.charAt(0).toUpperCase()+data.word.slice(1)+"\n";
-            data.definitions.forEach(function(element,i){
-                returnMessage+=(i+1)+". "+element.definition+"\n";
-            });
-        }
-    });
-    return returnMessage;
+    return new Promise((resolve, reject) => {
+        var returnMessage="";
+        $.get( "/search", { name: keyWord })
+        .done(function( data ){
+            console.log(data);
+            if (data==="Bad response from server!"){
+                resolve("Sorry, we cannot find this words");
+            }
+            else{
+                returnMessage=data.word.charAt(0).toUpperCase()+data.word.slice(1)+"\n";
+                data.definitions.forEach(function(element,i){
+                    returnMessage+=(i+1)+". "+element.definition+"\n";
+                });
+                resolve(returnMessage);
+            }       
+        });
+    });  
 }
 
 Galadriel.addCommands([
@@ -58,12 +60,13 @@ Galadriel.addCommands([
         smart:true,
         action: (i,wildcard) => {
             say("Searching for the word..");
-            findDef(wildcard);
+            findDef(wildcard).then((returnMessage)=>say(returnMessage));
         }
     },
     {
         indexes: ['Stop','Bye','Goodbye','Go away'],
         action: (i,wildcard) => {
+            say("Goodbye, master");
             Galadriel.fatality().then(() => {
                 console.log("Galadriel succesfully stopped");
             });
