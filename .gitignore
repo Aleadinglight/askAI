@@ -60,6 +60,9 @@ typings/
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
+# lmao lul lul
+key.txt
+
 # next.js build output
 .next
 
