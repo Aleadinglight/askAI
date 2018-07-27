@@ -25,8 +25,7 @@ function say(phrase,lastphrase=""){
 }
 
 function displayData(data, i){
-    say(data.definitions[i].definition);
-    var sentence = (i+1)+". "+element.definition+"\n";
+    var sentence = (i+1)+". "+data.definitions[i].definition+"\n";
     say(sentence,ai.message);
     if (data.definitions.length < i+1){
         setTimeout(function(){displayData(data,i+1),1000});
