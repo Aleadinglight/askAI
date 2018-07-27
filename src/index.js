@@ -26,11 +26,11 @@ function say(phrase,lastphrase=""){
 
 function displayData(data, i){
     if ( i < data.definitions.length){
-        var sentence = (i+1)+". "+data.definitions[i].definition+"\n";
-        say(sentence,ai.message);
-        console.log(data.definitions.length);
-        console.log(i);
-        setTimeout(function(){displayData(data,i+1),1000});
+        setTimeout(function(){
+            var sentence = (i+1)+". "+data.definitions[i].definition+"\n";
+            say(sentence,ai.message);
+            displayData(data,i+1)}
+        ,1000);
     }
 }
 
