@@ -16,20 +16,21 @@ var ai = new Vue({
 });
 
 
-function delayProgram(milisecs){
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{resolve()}, milisecs);
-    });
+function say(phrase,lastphrase=""){
+    if (lastphrase==="")
+        ai.message=lastphrase;
+    console.log(phrase);
+    Galadriel.say(phrase);
+    ai.message+= phrase;
 }
 
-function say(phrase,lastphrase="",delaymilisecs=0){
-    delayProgram(delaymilisecs).then(()=>{
-        if (lastphrase==="")
-            ai.message=lastphrase;
-        console.log(phrase);
-        Galadriel.say(phrase);
-        ai.message+= phrase;
-    });
+function displayData(data, i){
+    say(data.definitions[i].definition);
+    var sentence = (i+1)+". "+element.definition+"\n";
+    say(sentence,ai.message);
+    if (data.definitions.length < i+1){
+        setTimeout(function(){displayData(data,i+1),1000});
+    }
 }
 
 function findDef(keyWord){
@@ -68,13 +69,7 @@ Galadriel.addCommands([
             say("Searching for the word..");
             findDef(wildcard).then((data)=>{
                 say(data.word.charAt(0).toUpperCase()+data.word.slice(1)+"\n");
-                
-                data.definitions.forEach(function(element,i){
-                    var sentence = (i+1)+". "+element.definition+"\n";
-                    say(sentence,ai.message,3000);
-                }); 
-               
-                
+                displayData(data,0);
             });
         }
     },
