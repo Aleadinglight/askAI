@@ -9,6 +9,10 @@ html,body{
     height: 80vh;
 }
 
+.text{
+    overflow-y:auto;
+}
+
 .vue-typer {
     font-family: "Courier New", Courier, monospace;
     font-size: 30px;
