@@ -25,9 +25,11 @@ function say(phrase,lastphrase=""){
 }
 
 function displayData(data, i){
-    var sentence = (i+1)+". "+data.definitions[i].definition+"\n";
-    say(sentence,ai.message);
-    if (data.definitions.length < i+1){
+    if ( i < data.definitions.length){
+        var sentence = (i+1)+". "+data.definitions[i].definition+"\n";
+        say(sentence,ai.message);
+        console.log(data.definitions.length);
+        console.log(i);
         setTimeout(function(){displayData(data,i+1),1000});
     }
 }
@@ -39,7 +41,7 @@ function findDef(keyWord){
         .done(function( data ){
             console.log(data);
             if (data==="Bad response from server!"){
-                resolve("Sorry, we cannot find this words");
+                reject("Sorry, we cannot find this words");
             }
             else{
                 resolve(data);
@@ -78,7 +80,7 @@ Galadriel.addCommands([
             say("Goodbye, master");
             Galadriel.fatality().then(() => {
                 console.log("Galadriel succesfully stopped");
-            });
+            }).catch((error)=>{say(error)});
         }
     },
 ]);
