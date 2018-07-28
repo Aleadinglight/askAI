@@ -20,7 +20,11 @@ function say(phrase,lastphrase=""){
     if (lastphrase==="")
         ai.message=lastphrase;
     console.log(phrase);
-    Galadriel.say(phrase);
+    Galadriel.say(phrase,{ 
+        onEnd:()=>{
+            Galadriel.ArtyomWebkitSpeechRecognition.abort();
+        }
+    });
     ai.message+= phrase;
 }
 
@@ -33,6 +37,7 @@ function displayData(data, i){
                 },
                 onEnd: () => {
                     console.log("Finish");
+                    Galadriel.ArtyomWebkitSpeechRecognition.abort();
                     setTimeout(displayData,1000,data,i+1);
                 }
             });
@@ -46,6 +51,7 @@ function displayData(data, i){
                 },
                 onEnd: () => {
                     console.log("Finish");
+                    Galadriel.ArtyomWebkitSpeechRecognition.abort();
                     setTimeout(displayData,1000,data,i+1);
                 }
             });
