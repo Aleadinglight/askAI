@@ -27,13 +27,31 @@ function say(phrase,lastphrase=""){
 function displayData(data, i){
     if ( i < data.definitions.length){
         if (i==-1){
-            say(data.word.charAt(0).toUpperCase()+data.word.slice(1)+"\n");
+            Galadriel.say(data.word.charAt(0).toUpperCase()+data.word.slice(1),{
+                onStart: () => {
+                    console.log("Reading ...");
+                },
+                onEnd: () => {
+                    console.log("Finish");
+                    setTimeout(displayData,5000,data,i+1);
+                }
+            });
+            ai.message+= data.word.charAt(0).toUpperCase()+data.word.slice(1);
         }
         else{
             var sentence = (i+1)+". "+data.definitions[i].definition.charAt(0).toUpperCase()+data.definitions[i].definition.slice(1);
-            say(sentence);
+            Galadriel.say(sentence,{
+                onStart: () => {
+                    console.log("Reading ...");
+                },
+                onEnd: () => {
+                    console.log("Finish");
+                    setTimeout(displayData,5000,data,i+1);
+                }
+            });
+            ai.message+= data.word.charAt(0).toUpperCase()+data.word.slice(1);
         }
-        setTimeout(displayData,3000,data,i+1);
+        
     }
 }
 

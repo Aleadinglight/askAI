@@ -5,3 +5,5 @@ tofix:
 - writing the definition is not waiting
 - Artyom recognise its own voice as a command.
 - bad bug!!!! the wait function is not working
+
+`npm i hoek`
