@@ -26,11 +26,14 @@ function say(phrase,lastphrase=""){
 
 function displayData(data, i){
     if ( i < data.definitions.length){
-        var sentence = (i+1)+". "+data.definitions[i].definition+"\n";
-        say(sentence,ai.message);
-        setTimeout(function(){
-            displayData(data,i+1)}
-        ,1000);
+        if (i==-1){
+            say(data.word.charAt(0).toUpperCase()+data.word.slice(1)+"\n");
+        }
+        else{
+            var sentence = (i+1)+". "+data.definitions[i].definition.charAt(0).toUpperCase()+data.definitions[i].definition.slice(1);
+            say(sentence);
+        }
+        setTimeout(displayData,3000,data,i+1);
     }
 }
 
@@ -69,7 +72,6 @@ Galadriel.addCommands([
         action: (i,wildcard) => {
             say("Searching for the word..");
             findDef(wildcard).then((data)=>{
-                say(data.word.charAt(0).toUpperCase()+data.word.slice(1)+"\n");
                 displayData(data,0);
             });
         }
