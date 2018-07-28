@@ -33,10 +33,10 @@ function displayData(data, i){
                 },
                 onEnd: () => {
                     console.log("Finish");
-                    setTimeout(displayData,5000,data,i+1);
+                    setTimeout(displayData,1000,data,i+1);
                 }
             });
-            ai.message+= data.word.charAt(0).toUpperCase()+data.word.slice(1);
+            ai.message= data.word.charAt(0).toUpperCase()+data.word.slice(1);
         }
         else{
             var sentence = (i+1)+". "+data.definitions[i].definition.charAt(0).toUpperCase()+data.definitions[i].definition.slice(1);
@@ -46,10 +46,10 @@ function displayData(data, i){
                 },
                 onEnd: () => {
                     console.log("Finish");
-                    setTimeout(displayData,5000,data,i+1);
+                    setTimeout(displayData,1000,data,i+1);
                 }
             });
-            ai.message+= data.word.charAt(0).toUpperCase()+data.word.slice(1);
+            ai.message= sentence;
         }
         
     }
