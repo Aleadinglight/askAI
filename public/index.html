@@ -22,14 +22,16 @@
     </div>
     <div class="container-fluid align-middle mid">
         <div id="ai" class="row d-flex justify-content-left">
-            <div class="col-md-2"></div>
-            <div class="col-md-9">
-                <vue-typer :text="message" :repeat='0'> </vue-typer>    
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <h1><vue-typer :text="message" :repeat='0' v-if="showMessage"> </vue-typer></h1>
+                </br> 
+                <vue-typer :text="definition" :repeat='0' v-if="showDef"> </vue-typer>  
             </div>
             <div class="col-md-1"></div>
         </div>
     </div>
-    <<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <ul class="navbar-nav">
             <li class="nav-item active">
             <a class="nav-link" href="#">Active</a>

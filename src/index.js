@@ -6,8 +6,10 @@ const Galadriel = new Artyom();
 var ai = new Vue({
     el:'#ai',
     data:{
-        message: 'Hello',
-        show:true
+        message: '...',
+        definition: '',
+        showDef:false,
+        showMessage:true
     },
     components: {
         // ES6; property shorthand + Vue should automatically dasherize the key for us
@@ -15,8 +17,26 @@ var ai = new Vue({
     }
 });
 
+$(document).ready(function(){
+    Galadriel.ArtyomVoicesIdentifiers["en-GB"] = ["Google UK English Female", "Google UK English Male", "en-GB", "en_GB"];
+    Galadriel.initialize({
+        lang: "en-GB", // GreatBritain english
+        continuous: true, // Listen forever
+        soundex: true,// Use the soundex algorithm to increase accuracy
+        debug: true, // Show messages in the console
+        executionKeyword: "and do it now",
+        listen: true, // Start to listen commands !
+    }).then(() => {
+        say("Hello master, I am here to answer your question.");
+        console.log("Galadriel has been succesfully initialized");
+    }).catch((err) => {
+        say("This browser does not support Google Speech API. Upgrade to Chrome 33+ for more features.");
+        console.error("Galadriel couldn't be initialized: ", err);
+    });
+});
 
 function say(phrase,lastphrase=""){
+    ai.showDef=false;
     if (lastphrase==="")
         ai.message=lastphrase;
     console.log(phrase);
@@ -34,6 +54,7 @@ function displayData(data, i){
             Galadriel.say(data.word.charAt(0).toUpperCase()+data.word.slice(1),{
                 onStart: () => {
                     console.log("Reading ...");
+                    ai.showDef=false;
                 },
                 onEnd: () => {
                     console.log("Finish");
@@ -48,6 +69,8 @@ function displayData(data, i){
             Galadriel.say(sentence,{
                 onStart: () => {
                     console.log("Reading ...");
+                    ai.definition=sentence;
+                    ai.showDef=true;
                 },
                 onEnd: () => {
                     console.log("Finish");
@@ -55,7 +78,7 @@ function displayData(data, i){
                     setTimeout(displayData,700,data,i+1);
                 }
             });
-            ai.message= sentence;
+            
         }
         
     }
@@ -96,6 +119,7 @@ Galadriel.addCommands([
         action: (i,wildcard) => {
             say("Searching for the word..");
             findDef(wildcard).then((data)=>{
+                ai.showDef=true;
                 displayData(data,-1);
             });
         }
@@ -111,20 +135,4 @@ Galadriel.addCommands([
     },
 ]);
 
-Galadriel.ArtyomVoicesIdentifiers["en-GB"] = ["Google UK English Female", "Google UK English Male", "en-GB", "en_GB"];
-$(document).ready(function(){
-    Galadriel.initialize({
-        lang: "en-GB", // GreatBritain english
-        continuous: true, // Listen forever
-        soundex: true,// Use the soundex algorithm to increase accuracy
-        debug: true, // Show messages in the console
-        executionKeyword: "and do it now",
-        listen: true, // Start to listen commands !
-    }).then(() => {
-        say("Hello master, I am here to answer your question.");
-        console.log("Galadriel has been succesfully initialized");
-    }).catch((err) => {
-        say("Sorry, this browser does not support Google Speech API. Upgrade to Chrome 33+ for more features.");
-        console.error("Galadriel couldn't be initialized: ", err);
-    });
-});
+
