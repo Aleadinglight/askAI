@@ -6,7 +6,7 @@ const Galadriel = new Artyom();
 var ai = new Vue({
     el:'#ai',
     data:{
-        message: ['Hellooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo'],
+        message: ' ',
         show:true
     },
     components: {
@@ -112,16 +112,19 @@ Galadriel.addCommands([
 ]);
 
 Galadriel.ArtyomVoicesIdentifiers["en-GB"] = ["Google UK English Female", "Google UK English Male", "en-GB", "en_GB"];
-
-Galadriel.initialize({
-    lang: "en-GB", // GreatBritain english
-    continuous: true, // Listen forever
-    soundex: true,// Use the soundex algorithm to increase accuracy
-    debug: true, // Show messages in the console
-    executionKeyword: "and do it now",
-    listen: true, // Start to listen commands !
-}).then(() => {
-    console.log("Galadriel has been succesfully initialized");
-}).catch((err) => {
-    console.error("Galadriel couldn't be initialized: ", err);
+$(document).ready(function(){
+    Galadriel.initialize({
+        lang: "en-GB", // GreatBritain english
+        continuous: true, // Listen forever
+        soundex: true,// Use the soundex algorithm to increase accuracy
+        debug: true, // Show messages in the console
+        executionKeyword: "and do it now",
+        listen: true, // Start to listen commands !
+    }).then(() => {
+        say("Hello master, I am here to answer your question.");
+        console.log("Galadriel has been succesfully initialized");
+    }).catch((err) => {
+        say("Sorry, this browser does not support Google Speech API. Upgrade to Chrome 33+ for more features.");
+        console.error("Galadriel couldn't be initialized: ", err);
+    });
 });
