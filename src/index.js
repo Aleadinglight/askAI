@@ -38,7 +38,7 @@ function displayData(data, i){
                 onEnd: () => {
                     console.log("Finish");
                     Galadriel.ArtyomWebkitSpeechRecognition.abort();
-                    setTimeout(displayData,1000,data,i+1);
+                    setTimeout(displayData,1500,data,i+1);
                 }
             });
             ai.message= data.word.charAt(0).toUpperCase()+data.word.slice(1);
@@ -52,7 +52,7 @@ function displayData(data, i){
                 onEnd: () => {
                     console.log("Finish");
                     Galadriel.ArtyomWebkitSpeechRecognition.abort();
-                    setTimeout(displayData,1000,data,i+1);
+                    setTimeout(displayData,700,data,i+1);
                 }
             });
             ai.message= sentence;
@@ -96,7 +96,7 @@ Galadriel.addCommands([
         action: (i,wildcard) => {
             say("Searching for the word..");
             findDef(wildcard).then((data)=>{
-                displayData(data,0);
+                displayData(data,-1);
             });
         }
     },
