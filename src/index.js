@@ -6,7 +6,7 @@ const Galadriel = new Artyom();
 var ai = new Vue({
     el:'#ai',
     data:{
-        message: ' ',
+        message: 'Hello',
         show:true
     },
     components: {
