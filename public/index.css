@@ -9,15 +9,20 @@ html,body{
     height: 80vh;
 }
 
-.text{
-    overflow-y:auto;
+.response {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 30px;
+    position: relative;
+    display: block;
+    margin-bottom: .75rem;
+    border-radius: .25rem;
+    border: 1px solid #fff;
 }
 
 .vue-typer {
     font-family: "Courier New", Courier, monospace;
     font-size: 30px;
-    white-space: nowrap;
-    overflow: hidden;
+    white-space: pre;
 }
 
 .vue-typer .custom.char {
@@ -49,4 +54,15 @@ html,body{
     50% {
         opacity: 0;
     }
+}
+
+pre#target {
+	white-space: pre;           /* CSS 2.0 */
+	white-space: pre-wrap;      /* CSS 2.1 */
+	white-space: pre-line;      /* CSS 3.0 */
+	white-space: -pre-wrap;     /* Opera 4-6 */
+	white-space: -o-pre-wrap;   /* Opera 7 */
+	white-space: -moz-pre-wrap; /* Mozilla */
+	white-space: -hp-pre-wrap;  /* HP Printers */
+	word-wrap: break-word;      /* IE 5+ */
 }
