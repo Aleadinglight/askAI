@@ -22,7 +22,7 @@ html,body{
 .vue-typer {
     font-family: "Courier New", Courier, monospace;
     font-size: 30px;
-    white-space: pre;
+    /*white-space: pre;*/
 }
 
 .vue-typer .custom.char {
