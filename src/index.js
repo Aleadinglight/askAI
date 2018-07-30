@@ -91,7 +91,7 @@ function findDef(keyWord){
         .done(function( data ){
             console.log(data);
             if (data==="Bad response from server!"){
-                reject("Sorry, we cannot find this words");
+                reject("Sorry, we cannot find this word.");
             }
             else{
                 resolve(data);
@@ -121,6 +121,8 @@ Galadriel.addCommands([
             findDef(wildcard).then((data)=>{
                 ai.showDef=true;
                 displayData(data,-1);
+            }).catch((error) => {
+                say(error);
             });
         }
     },
@@ -130,7 +132,9 @@ Galadriel.addCommands([
             say("Goodbye, master");
             Galadriel.fatality().then(() => {
                 console.log("Galadriel succesfully stopped");
-            }).catch((error)=>{say(error)});
+            }).catch( (error)=>{
+                say(error);
+            });
         }
     },
 ]);
