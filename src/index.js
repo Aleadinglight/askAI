@@ -6,7 +6,7 @@ const Galadriel = new Artyom();
 var ai = new Vue({
     el:'#ai',
     data:{
-        message: '...',
+        message: 'Please allow Chrome to use your microphone.',
         definition: '',
         showDef:false,
         showMessage:true
@@ -102,15 +102,15 @@ function findDef(keyWord){
 
 Galadriel.addCommands([
     {
-        indexes: ['Hello','Hi','is someone there'],
+        indexes: ['Hello','Hi','Hey'],
         action: (i) => {
-            say("Hello, I am Galadriel");        
+            say("Hello, I am Galadriel.");        
         }
     },
     {
         indexes: ['Galadriel','Are you there'],
         action: (i) => {
-            say("I am here, master");        
+            say("I am here, master.");        
         }
     },
     {
