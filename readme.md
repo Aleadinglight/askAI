@@ -1,8 +1,31 @@
-/opt/google/chrome/chrome --flag-switches-begin --flag-switches-end --allow-file-access-from-files
+# AskAI
 
-tofix:
-- Overflow character when zoom. [Fixed by removing `whitespace: pre` to `whitespace: pre-line` ]
-- Writing the definition is not waiting. [Fixed by adding `onEnd()`]
-- Artyom recognise its own voice as a command. [Fixed by abort all the commands happen while it is saying]
+Galadriel, an AI create for the purpose of searching definition of an English word. You can ask and she will list the definition of the word for you. For now, it is supported in Chrome only.
 
-- Dependencies problem `npm i hoek`
+## How to use
+
+- `Hello`,`Hey`,`Hi`: Let Galadriel knows you are there.
+
+- `Galadriel`,`Are you there`: Check to see if Galadriel is listening to you.
+
+- `What is *`: Insert the word that you need to ask in `*`. Galadrie will tell you the definition after searching for a moment.
+
+- `Shut down`, `Bye`, `Goodbye`, `Go away`: Shut down Galadriel. 
+
+## This project was made of
+
+- Webpack
+
+- Express Node.js
+
+- Vue.js 2.0
+
+## Special thanks to
+
+- [Artyom](https://github.com/sdkcarlos/artyom.js): A very great API that help me run Web Speech API continously. Remember to check it out.
+
+- [WordsAPI](https://www.wordsapi.com/): Very nice API that help me find word's definitions.
+
+## Run it locally
+
+Simple clone the project and run `npm start`.
