@@ -2,6 +2,12 @@
 
 Galadriel, an AI create for the purpose of searching definition of an English word. You can ask and she will list the definition of the word for you. For now, it is supported in Chrome only.
 
+To website: https://asktheai.herokuapp.com/
+
+## Demo
+
+A live demo of the website can be found [here](https://drive.google.com/file/d/1Tkyp-wGxnNYWqwmtKk5FownnCC9GIgiL/view?usp=sharing).
+
 ## How to use
 
 - `Hello`,`Hey`,`Hi`: Let Galadriel knows you are there.

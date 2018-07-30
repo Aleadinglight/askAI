@@ -59,13 +59,13 @@ function displayData(data, i){
                 onEnd: () => {
                     console.log("Finish");
                     Galadriel.ArtyomWebkitSpeechRecognition.abort();
-                    setTimeout(displayData,1200,data,i+1);
+                    setTimeout(displayData,800,data,i+1);
                 }
             });
             ai.message= data.word.charAt(0).toUpperCase()+data.word.slice(1);
         }
         else{
-            var sentence = (i+1)+". "+data.definitions[i].definition.charAt(0).toUpperCase()+data.definitions[i].definition.slice(1);
+            var sentence = (i+1)+". "+data.definitions[i].definition.charAt(0).toUpperCase()+data.definitions[i].definition.slice(1)+".";
             Galadriel.say(sentence,{
                 onStart: () => {
                     console.log("Reading ...");
@@ -119,7 +119,6 @@ Galadriel.addCommands([
         action: (i,wildcard) => {
             say("Searching for the word..");
             findDef(wildcard).then((data)=>{
-                ai.showDef=true;
                 displayData(data,-1);
             }).catch((error) => {
                 say(error);
@@ -129,7 +128,7 @@ Galadriel.addCommands([
     {
         indexes: ['Shut down','Bye','Goodbye','Go away'],
         action: (i,wildcard) => {
-            say("Goodbye, master");
+            say("Goodbye, master.");
             Galadriel.fatality().then(() => {
                 console.log("Galadriel succesfully stopped");
             }).catch( (error)=>{
