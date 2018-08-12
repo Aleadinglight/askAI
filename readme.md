@@ -34,4 +34,8 @@ A live demo of the website can be found [here](https://drive.google.com/file/d/1
 
 ## Run it locally
 
-Simple clone the project and run `npm start`.
+Simple clone the project and run 
+```bash
+npm install
+npm run start
+```
