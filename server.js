@@ -6,7 +6,7 @@ const path = require('path');
 
 
 app.use(express.json());
-app.use(express.static('./public'));
+app.use(express.static(path.join(__dirname, './public')));
 
 var key = fs.readFileSync("key.txt");
 
@@ -30,6 +30,9 @@ app.get('/search', (req, res) => {
 		}
 	);
 });
+
+/** handle other requests to index.html */
+app.get('*', (req, res, next) => res.redirect('/'));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
