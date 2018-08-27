@@ -4,11 +4,11 @@ const express = require('express');
 const app = express();
 const path = require('path');  
 
-
 app.use(express.json());
 app.use(express.static('./public'));
 
-var key = fs.readFileSync("key.txt");
+var key = fs.readFileSync("./key.txt", function(err, data) {console.log("Loaded WordsAPI")});
+key = key.toString();
 
 app.get('/', (req, res) => {	
 	res.sendFile(path.join(__dirname + './index.html'));
@@ -20,7 +20,7 @@ app.get('/search', (req, res) => {
 		.header("X-Mashape-Host", "wordsapiv1.p.mashape.com")
 		.end(function (result) {
 			if (result.status!=200){
-				console.log("Bad response!\n", result.status);
+				console.log("Bad response!\n", result.body);
 				res.send("Bad response from server!")
 			}
 			else{
